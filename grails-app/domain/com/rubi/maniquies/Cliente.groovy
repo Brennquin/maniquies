@@ -1,7 +1,8 @@
 package com.rubi.maniquies
 
-class Proveedor {
-    String nombre
+class Cliente {
+    
+    String name
 
     static constraints = {
     }
@@ -9,4 +10,5 @@ class Proveedor {
     String toString(){
         return nombre;
     }
+    
 }

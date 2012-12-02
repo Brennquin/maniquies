@@ -17,6 +17,6 @@ class Producto {
     }
     
     String toString(){
-        return nombre
+        return nombre;
     }
 }
