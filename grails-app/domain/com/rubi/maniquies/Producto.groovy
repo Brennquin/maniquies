@@ -11,4 +11,8 @@ class Producto {
         
     static constraints = {
     }
+    
+    String toString(){
+        return nombre;
+    }
 }
