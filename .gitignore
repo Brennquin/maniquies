@@ -1,0 +1,10 @@
+.DS_STORE
+stacktrace.og
+target
+*.class
+.idea
+*.jasper
+*.jrxml
+web-app/WEB-INF/classes
+*.orig
+/.settings/
