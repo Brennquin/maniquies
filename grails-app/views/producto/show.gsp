@@ -41,6 +41,24 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${producto?.tamaño}">
+				<li class="fieldcontain">
+					<span id="tamaño-label" class="property-label"><g:message code="producto.tamaño.label" default="Tamaño" /></span>
+					
+						<span class="property-value" aria-labelledby="tamaño-label"><g:fieldValue bean="${producto}" field="tamaño"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${producto?.almacen}">
+				<li class="fieldcontain">
+					<span id="almacen-label" class="property-label"><g:message code="producto.almacen.label" default="Almacen" /></span>
+					
+						<span class="property-value" aria-labelledby="almacen-label"><g:link controller="almacen" action="show" id="${producto?.almacen?.id}">${producto?.almacen?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${producto?.material}">
 				<li class="fieldcontain">
 					<span id="material-label" class="property-label"><g:message code="producto.material.label" default="Material" /></span>
@@ -64,15 +82,6 @@
 					<span id="precio-label" class="property-label"><g:message code="producto.precio.label" default="Precio" /></span>
 					
 						<span class="property-value" aria-labelledby="precio-label"><g:fieldValue bean="${producto}" field="precio"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${producto?.tamaño}">
-				<li class="fieldcontain">
-					<span id="tamaño-label" class="property-label"><g:message code="producto.tamaño.label" default="Tamaño" /></span>
-					
-						<span class="property-value" aria-labelledby="tamaño-label"><g:fieldValue bean="${producto}" field="tamaño"/></span>
 					
 				</li>
 				</g:if>

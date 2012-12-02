@@ -1,11 +1,12 @@
 package com.rubi.maniquies
 
 class Almacen {
-    Integer cantidad
-    Proveedor proveedor
-    Producto producto
+    String nombre
     
-
     static constraints = {
+    }
+    
+    String toString(){
+        return nombre
     }
 }

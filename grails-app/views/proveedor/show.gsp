@@ -32,6 +32,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${proveedor?.producto}">
+				<li class="fieldcontain">
+					<span id="producto-label" class="property-label"><g:message code="proveedor.producto.label" default="Producto" /></span>
+					
+						<span class="property-value" aria-labelledby="producto-label"><g:link controller="producto" action="show" id="${proveedor?.producto?.id}">${proveedor?.producto?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

@@ -24,11 +24,7 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="cantidad" title="${message(code: 'almacen.cantidad.label', default: 'Cantidad')}" />
-					
-						<th><g:message code="almacen.producto.label" default="Producto" /></th>
-					
-						<th><g:message code="almacen.proveedor.label" default="Proveedor" /></th>
+						<g:sortableColumn property="nombre" title="${message(code: 'almacen.nombre.label', default: 'Nombre')}" />
 					
 					</tr>
 				</thead>
@@ -36,11 +32,7 @@
 				<g:each in="${almacenList}" status="i" var="almacen">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${almacen.id}">${fieldValue(bean: almacen, field: "cantidad")}</g:link></td>
-					
-						<td>${fieldValue(bean: almacen, field: "producto")}</td>
-					
-						<td>${fieldValue(bean: almacen, field: "proveedor")}</td>
+						<td><g:link action="show" id="${almacen.id}">${fieldValue(bean: almacen, field: "nombre")}</g:link></td>
 					
 					</tr>
 				</g:each>
