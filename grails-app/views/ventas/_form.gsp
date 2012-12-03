@@ -16,8 +16,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="producto" name="producto.id" from="${com.rubi.maniquies.Producto.list()}" optionKey="id" required="" value="${ventas?.producto?.id}" class="many-to-one"/>
-        <g:message code="ventas.precio.label" default="Precio" />
-        <g:field name="total" value="${fieldValue(bean: ventas, field: 'precio')}" disabled="disabled" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ventas, field: 'cantidad', 'error')} required">
@@ -27,16 +25,6 @@
 	</label>
 	<g:field name="cantidad" type="number" min="0" value="${fieldValue(bean: ventas, field: 'cantidad')}" required=""/>
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: ventas, field: 'total', 'error')} required">
-	<label for="total">
-		<g:message code="ventas.total.label" default="Total" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="total" value="${fieldValue(bean: ventas, field: 'total')}" required=""/>
-</div>
-
-
 
 <div class="fieldcontain ${hasErrors(bean: ventas, field: 'fechaVenta', 'error')} required">
 	<label for="fechaVenta">

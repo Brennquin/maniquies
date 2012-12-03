@@ -13,7 +13,6 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-ventas" class="content scaffold-show" role="main">
@@ -22,6 +21,15 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list ventas">
+                          
+                                <g:if test="${ventas?.producto}">
+				<li class="fieldcontain">
+					<span id="producto-label" class="property-label"><g:message code="ventas.producto.label" default="Producto" /></span>
+					
+						<span class="property-value" aria-labelledby="producto-label">${ventas?.producto?.encodeAsHTML()}</span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${ventas?.cantidad}">
 				<li class="fieldcontain">
@@ -45,7 +53,7 @@
 				<li class="fieldcontain">
 					<span id="cliente-label" class="property-label"><g:message code="ventas.cliente.label" default="Cliente" /></span>
 					
-						<span class="property-value" aria-labelledby="cliente-label"><g:link controller="cliente" action="show" id="${ventas?.cliente?.id}">${ventas?.cliente?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="cliente-label">${ventas?.cliente?.encodeAsHTML()}</span>
 					
 				</li>
 				</g:if>
@@ -55,15 +63,6 @@
 					<span id="fechaVenta-label" class="property-label"><g:message code="ventas.fechaVenta.label" default="Fecha Venta" /></span>
 					
 						<span class="property-value" aria-labelledby="fechaVenta-label"><g:formatDate date="${ventas?.fechaVenta}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${ventas?.producto}">
-				<li class="fieldcontain">
-					<span id="producto-label" class="property-label"><g:message code="ventas.producto.label" default="Producto" /></span>
-					
-						<span class="property-value" aria-labelledby="producto-label"><g:link controller="producto" action="show" id="${ventas?.producto?.id}">${ventas?.producto?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

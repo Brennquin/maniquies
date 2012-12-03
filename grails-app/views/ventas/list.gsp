@@ -24,7 +24,9 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="cantidad" title="${message(code: 'ventas.cantidad.label', default: 'Cantidad')}" />
+                                                <th><g:message code="ventas.producto.label" default="Producto" /></th>
+						
+                                                <g:sortableColumn property="cantidad" title="${message(code: 'ventas.cantidad.label', default: 'Cantidad')}" />
 					
 						<g:sortableColumn property="total" title="${message(code: 'ventas.total.label', default: 'Total')}" />
 					
@@ -32,23 +34,21 @@
 					
 						<g:sortableColumn property="fechaVenta" title="${message(code: 'ventas.fechaVenta.label', default: 'Fecha Venta')}" />
 					
-						<th><g:message code="ventas.producto.label" default="Producto" /></th>
-					
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${ventasList}" status="i" var="ventas">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${ventas.id}">${fieldValue(bean: ventas, field: "cantidad")}</g:link></td>
+						<td><g:link action="show" id="${ventas.id}">${fieldValue(bean: ventas, field: "producto")}</g:link></td>
 					
-						<td>${fieldValue(bean: ventas, field: "total")}</td>
+						<td>${fieldValue(bean: ventas, field: "cantidad")}</td>
+                                                
+                                                <td>${fieldValue(bean: ventas, field: "total")}</td>
 					
 						<td>${fieldValue(bean: ventas, field: "cliente")}</td>
 					
 						<td><g:formatDate date="${ventas.fechaVenta}" /></td>
-					
-						<td>${fieldValue(bean: ventas, field: "producto")}</td>
 					
 					</tr>
 				</g:each>
