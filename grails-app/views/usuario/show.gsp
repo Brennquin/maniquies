@@ -1,82 +1,107 @@
 
 <%@ page import="com.rubi.maniquies.Usuario" %>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="bootstrap">
 		<g:set var="entityName" value="${message(code: 'usuario.label', default: 'Usuario')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-usuario" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-usuario" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list usuario">
+		<div class="row-fluid">
 			
-				<g:if test="${usuario?.username}">
-				<li class="fieldcontain">
-					<span id="username-label" class="property-label"><g:message code="usuario.username.label" default="Username" /></span>
-					
-						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${usuario}" field="username"/></span>
-					
-				</li>
+			<div class="span3">
+				<div class="well">
+					<ul class="nav nav-list">
+						<li class="nav-header">${entityName}</li>
+						<li>
+							<g:link class="list" action="list">
+								<i class="icon-list"></i>
+								<g:message code="default.list.label" args="[entityName]" />
+							</g:link>
+						</li>
+						<li>
+							<g:link class="create" action="create">
+								<i class="icon-plus"></i>
+								<g:message code="default.create.label" args="[entityName]" />
+							</g:link>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="span9">
+
+				<div class="page-header">
+					<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+				</div>
+
+				<g:if test="${flash.message}">
+				<bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
 				</g:if>
-			
-			
-				<g:if test="${usuario?.accountExpired}">
-				<li class="fieldcontain">
-					<span id="accountExpired-label" class="property-label"><g:message code="usuario.accountExpired.label" default="Account Expired" /></span>
-					
-						<span class="property-value" aria-labelledby="accountExpired-label"><g:formatBoolean boolean="${usuario?.accountExpired}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${usuario?.accountLocked}">
-				<li class="fieldcontain">
-					<span id="accountLocked-label" class="property-label"><g:message code="usuario.accountLocked.label" default="Account Locked" /></span>
-					
-						<span class="property-value" aria-labelledby="accountLocked-label"><g:formatBoolean boolean="${usuario?.accountLocked}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${usuario?.enabled}">
-				<li class="fieldcontain">
-					<span id="enabled-label" class="property-label"><g:message code="usuario.enabled.label" default="Enabled" /></span>
-					
-						<span class="property-value" aria-labelledby="enabled-label"><g:formatBoolean boolean="${usuario?.enabled}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${usuario?.passwordExpired}">
-				<li class="fieldcontain">
-					<span id="passwordExpired-label" class="property-label"><g:message code="usuario.passwordExpired.label" default="Password Expired" /></span>
-					
-						<span class="property-value" aria-labelledby="passwordExpired-label"><g:formatBoolean boolean="${usuario?.passwordExpired}" /></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form>
-				<fieldset class="buttons">
+
+				<dl>
+				
+					<g:if test="${usuario?.username}">
+						<dt><g:message code="usuario.username.label" default="Username" /></dt>
+						
+							<dd><g:fieldValue bean="${usuario}" field="username"/></dd>
+						
+					</g:if>
+				
+					<g:if test="${usuario?.password}">
+						<dt><g:message code="usuario.password.label" default="Password" /></dt>
+						
+							<dd><g:fieldValue bean="${usuario}" field="password"/></dd>
+						
+					</g:if>
+				
+					<g:if test="${usuario?.accountExpired}">
+						<dt><g:message code="usuario.accountExpired.label" default="Account Expired" /></dt>
+						
+							<dd><g:formatBoolean boolean="${usuario?.accountExpired}" /></dd>
+						
+					</g:if>
+				
+					<g:if test="${usuario?.accountLocked}">
+						<dt><g:message code="usuario.accountLocked.label" default="Account Locked" /></dt>
+						
+							<dd><g:formatBoolean boolean="${usuario?.accountLocked}" /></dd>
+						
+					</g:if>
+				
+					<g:if test="${usuario?.enabled}">
+						<dt><g:message code="usuario.enabled.label" default="Enabled" /></dt>
+						
+							<dd><g:formatBoolean boolean="${usuario?.enabled}" /></dd>
+						
+					</g:if>
+				
+					<g:if test="${usuario?.passwordExpired}">
+						<dt><g:message code="usuario.passwordExpired.label" default="Password Expired" /></dt>
+						
+							<dd><g:formatBoolean boolean="${usuario?.passwordExpired}" /></dd>
+						
+					</g:if>
+				
+				</dl>
+
+				<g:form>
 					<g:hiddenField name="id" value="${usuario?.id}" />
-					<g:link class="edit" action="edit" id="${usuario?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+					<div class="form-actions">
+						<g:link class="btn" action="edit" id="${usuario?.id}">
+							<i class="icon-pencil"></i>
+							<g:message code="default.button.edit.label" default="Edit" />
+						</g:link>
+						<button class="btn btn-danger" type="submit" name="_action_delete">
+							<i class="icon-trash icon-white"></i>
+							<g:message code="default.button.delete.label" default="Delete" />
+						</button>
+					</div>
+				</g:form>
+
+			</div>
+
 		</div>
 	</body>
 </html>

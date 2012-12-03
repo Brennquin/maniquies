@@ -1,10 +1,10 @@
 
-<%@ page import="com.rubi.maniquies.Cliente" %>
+<%@ page import="com.rubi.maniquies.UsuarioRol" %>
 <!doctype html>
 <html>
 	<head>
 		<meta name="layout" content="bootstrap">
-		<g:set var="entityName" value="${message(code: 'cliente.label', default: 'Cliente')}" />
+		<g:set var="entityName" value="${message(code: 'usuarioRol.label', default: 'UsuarioRol')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -42,19 +42,26 @@
 
 				<dl>
 				
-					<g:if test="${cliente?.nombre}">
-						<dt><g:message code="cliente.nombre.label" default="Nombre" /></dt>
+					<g:if test="${usuarioRol?.rol}">
+						<dt><g:message code="usuarioRol.rol.label" default="Rol" /></dt>
 						
-							<dd><g:fieldValue bean="${cliente}" field="nombre"/></dd>
+							<dd><g:link controller="rol" action="show" id="${usuarioRol?.rol?.id}">${usuarioRol?.rol?.encodeAsHTML()}</g:link></dd>
+						
+					</g:if>
+				
+					<g:if test="${usuarioRol?.usuario}">
+						<dt><g:message code="usuarioRol.usuario.label" default="Usuario" /></dt>
+						
+							<dd><g:link controller="usuario" action="show" id="${usuarioRol?.usuario?.id}">${usuarioRol?.usuario?.encodeAsHTML()}</g:link></dd>
 						
 					</g:if>
 				
 				</dl>
 
 				<g:form>
-					<g:hiddenField name="id" value="${cliente?.id}" />
+					<g:hiddenField name="id" value="${usuarioRol?.id}" />
 					<div class="form-actions">
-						<g:link class="btn" action="edit" id="${cliente?.id}">
+						<g:link class="btn" action="edit" id="${usuarioRol?.id}">
 							<i class="icon-pencil"></i>
 							<g:message code="default.button.edit.label" default="Edit" />
 						</g:link>

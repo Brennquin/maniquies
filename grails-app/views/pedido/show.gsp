@@ -1,85 +1,100 @@
 
 <%@ page import="com.rubi.maniquies.Pedido" %>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="bootstrap">
 		<g:set var="entityName" value="${message(code: 'pedido.label', default: 'Pedido')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-pedido" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-pedido" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list pedido">
+		<div class="row-fluid">
 			
-                                <g:if test="${pedido?.producto}">
-				<li class="fieldcontain">
-					<span id="producto-label" class="property-label"><g:message code="pedido.producto.label" default="Producto" /></span>
-					
-						<span class="property-value" aria-labelledby="producto-label"><g:link controller="producto" action="show" id="${pedido?.producto?.id}">${pedido?.producto?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-                          
-                                <g:if test="${pedido?.cantidad}">
-				<li class="fieldcontain">
-					<span id="cantidad-label" class="property-label"><g:message code="pedido.cantidad.label" default="Cantidad" /></span>
-					
-						<span class="property-value" aria-labelledby="cantidad-label"><g:fieldValue bean="${pedido}" field="cantidad"/></span>
-					
-				</li>
-				</g:if>
+			<div class="span3">
+				<div class="well">
+					<ul class="nav nav-list">
+						<li class="nav-header">${entityName}</li>
+						<li>
+							<g:link class="list" action="list">
+								<i class="icon-list"></i>
+								<g:message code="default.list.label" args="[entityName]" />
+							</g:link>
+						</li>
+						<li>
+							<g:link class="create" action="create">
+								<i class="icon-plus"></i>
+								<g:message code="default.create.label" args="[entityName]" />
+							</g:link>
+						</li>
+					</ul>
+				</div>
+			</div>
 			
-				<g:if test="${pedido?.status}">
-				<li class="fieldcontain">
-					<span id="status-label" class="property-label"><g:message code="pedido.status.label" default="Status" /></span>
-					
-						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${pedido}" field="status"/></span>
-					
-				</li>
+			<div class="span9">
+
+				<div class="page-header">
+					<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+				</div>
+
+				<g:if test="${flash.message}">
+				<bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
 				</g:if>
-			
-				<g:if test="${pedido?.fechaEntrega}">
-				<li class="fieldcontain">
-					<span id="fechaEntrega-label" class="property-label"><g:message code="pedido.fechaEntrega.label" default="Fecha Entrega" /></span>
-					
-						<span class="property-value" aria-labelledby="fechaEntrega-label"><g:formatDate date="${pedido?.fechaEntrega}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${pedido?.fechaPedido}">
-				<li class="fieldcontain">
-					<span id="fechaPedido-label" class="property-label"><g:message code="pedido.fechaPedido.label" default="Fecha Pedido" /></span>
-					
-						<span class="property-value" aria-labelledby="fechaPedido-label"><g:formatDate date="${pedido?.fechaPedido}" /></span>
-					
-				</li>
-				</g:if>
-			
+
+				<dl>
 				
-			
-			</ol>
-			<g:form>
-				<fieldset class="buttons">
+					<g:if test="${pedido?.cantidad}">
+						<dt><g:message code="pedido.cantidad.label" default="Cantidad" /></dt>
+						
+							<dd><g:fieldValue bean="${pedido}" field="cantidad"/></dd>
+						
+					</g:if>
+				
+					<g:if test="${pedido?.fechaEntrega}">
+						<dt><g:message code="pedido.fechaEntrega.label" default="Fecha Entrega" /></dt>
+						
+							<dd><g:formatDate date="${pedido?.fechaEntrega}" /></dd>
+						
+					</g:if>
+				
+					<g:if test="${pedido?.status}">
+						<dt><g:message code="pedido.status.label" default="Status" /></dt>
+						
+							<dd><g:fieldValue bean="${pedido}" field="status"/></dd>
+						
+					</g:if>
+				
+					<g:if test="${pedido?.fechaPedido}">
+						<dt><g:message code="pedido.fechaPedido.label" default="Fecha Pedido" /></dt>
+						
+							<dd><g:formatDate date="${pedido?.fechaPedido}" /></dd>
+						
+					</g:if>
+				
+					<g:if test="${pedido?.producto}">
+						<dt><g:message code="pedido.producto.label" default="Producto" /></dt>
+						
+							<dd><g:link controller="producto" action="show" id="${pedido?.producto?.id}">${pedido?.producto?.encodeAsHTML()}</g:link></dd>
+						
+					</g:if>
+				
+				</dl>
+
+				<g:form>
 					<g:hiddenField name="id" value="${pedido?.id}" />
-					<g:link class="edit" action="edit" id="${pedido?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                                        <g:if test="${pedido.status== "Pedido"}">
-                                            <g:link class="edit" action="entregar" id="${pedido?.id}"><g:message code="default.button.deliver.label" default="Entregar" /></g:link>
-                                        </g:if>
-				</fieldset>
-			</g:form>
+					<div class="form-actions">
+						<g:link class="btn" action="edit" id="${pedido?.id}">
+							<i class="icon-pencil"></i>
+							<g:message code="default.button.edit.label" default="Edit" />
+						</g:link>
+						<button class="btn btn-danger" type="submit" name="_action_delete">
+							<i class="icon-trash icon-white"></i>
+							<g:message code="default.button.delete.label" default="Delete" />
+						</button>
+					</div>
+				</g:form>
+
+			</div>
+
 		</div>
 	</body>
 </html>

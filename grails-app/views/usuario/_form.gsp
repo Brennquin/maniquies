@@ -15,7 +15,7 @@
 		<g:message code="usuario.password.label" default="Password" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:passwordField name="password" maxlength="64" required="" value="${usuario?.password}"/>
+	<g:textField name="password" required="" value="${usuario?.password}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: usuario, field: 'accountExpired', 'error')} ">
@@ -50,8 +50,3 @@
 	<g:checkBox name="passwordExpired" value="${usuario?.passwordExpired}" />
 </div>
 
-<g:javascript>
-    jQuery(document).ready(function() {
-       jQuery('#username').focus();
-    });
-</g:javascript>

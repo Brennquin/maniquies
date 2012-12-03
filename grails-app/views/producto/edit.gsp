@@ -1,41 +1,75 @@
 <%@ page import="com.rubi.maniquies.Producto" %>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="bootstrap">
 		<g:set var="entityName" value="${message(code: 'producto.label', default: 'Producto')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#edit-producto" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="edit-producto" class="content scaffold-edit" role="main">
-			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${producto}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${producto}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form method="post" >
-				<g:hiddenField name="id" value="${producto?.id}" />
-				<g:hiddenField name="version" value="${producto?.version}" />
-				<fieldset class="form">
-					<g:render template="form"/>
+		<div class="row-fluid">
+
+			<div class="span3">
+				<div class="well">
+					<ul class="nav nav-list">
+						<li class="nav-header">${entityName}</li>
+						<li>
+							<g:link class="list" action="list">
+								<i class="icon-list"></i>
+								<g:message code="default.list.label" args="[entityName]" />
+							</g:link>
+						</li>
+						<li>
+							<g:link class="create" action="create">
+								<i class="icon-plus"></i>
+								<g:message code="default.create.label" args="[entityName]" />
+							</g:link>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="span9">
+
+				<div class="page-header">
+					<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+				</div>
+
+				<g:if test="${flash.message}">
+				<bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
+				</g:if>
+
+				<g:hasErrors bean="${producto}">
+				<bootstrap:alert class="alert-error">
+				<ul>
+					<g:eachError bean="${producto}" var="error">
+					<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+					</g:eachError>
+				</ul>
+				</bootstrap:alert>
+				</g:hasErrors>
+
+				<fieldset>
+					<g:form class="form-horizontal" action="edit" id="${producto?.id}" >
+						<g:hiddenField name="version" value="${producto?.version}" />
+						<fieldset>
+							<f:all bean="producto"/>
+							<div class="form-actions">
+								<button type="submit" class="btn btn-primary">
+									<i class="icon-ok icon-white"></i>
+									<g:message code="default.button.update.label" default="Update" />
+								</button>
+								<button type="submit" class="btn btn-danger" name="_action_delete" formnovalidate>
+									<i class="icon-trash icon-white"></i>
+									<g:message code="default.button.delete.label" default="Delete" />
+								</button>
+							</div>
+						</fieldset>
+					</g:form>
 				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				</fieldset>
-			</g:form>
+
+			</div>
+
 		</div>
 	</body>
 </html>

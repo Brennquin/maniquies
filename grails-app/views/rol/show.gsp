@@ -1,10 +1,10 @@
 
-<%@ page import="com.rubi.maniquies.Cliente" %>
+<%@ page import="com.rubi.maniquies.Rol" %>
 <!doctype html>
 <html>
 	<head>
 		<meta name="layout" content="bootstrap">
-		<g:set var="entityName" value="${message(code: 'cliente.label', default: 'Cliente')}" />
+		<g:set var="entityName" value="${message(code: 'rol.label', default: 'Rol')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -42,19 +42,19 @@
 
 				<dl>
 				
-					<g:if test="${cliente?.nombre}">
-						<dt><g:message code="cliente.nombre.label" default="Nombre" /></dt>
+					<g:if test="${rol?.authority}">
+						<dt><g:message code="rol.authority.label" default="Authority" /></dt>
 						
-							<dd><g:fieldValue bean="${cliente}" field="nombre"/></dd>
+							<dd><g:fieldValue bean="${rol}" field="authority"/></dd>
 						
 					</g:if>
 				
 				</dl>
 
 				<g:form>
-					<g:hiddenField name="id" value="${cliente?.id}" />
+					<g:hiddenField name="id" value="${rol?.id}" />
 					<div class="form-actions">
-						<g:link class="btn" action="edit" id="${cliente?.id}">
+						<g:link class="btn" action="edit" id="${rol?.id}">
 							<i class="icon-pencil"></i>
 							<g:message code="default.button.edit.label" default="Edit" />
 						</g:link>

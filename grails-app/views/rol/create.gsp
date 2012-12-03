@@ -1,9 +1,9 @@
-<%@ page import="com.rubi.maniquies.Ventas" %>
+<%@ page import="com.rubi.maniquies.Rol" %>
 <!doctype html>
 <html>
 	<head>
 		<meta name="layout" content="bootstrap">
-		<g:set var="entityName" value="${message(code: 'ventas.label', default: 'Ventas')}" />
+		<g:set var="entityName" value="${message(code: 'rol.label', default: 'Rol')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -39,10 +39,10 @@
 				<bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
 				</g:if>
 
-				<g:hasErrors bean="${ventas}">
+				<g:hasErrors bean="${rol}">
 				<bootstrap:alert class="alert-error">
 				<ul>
-					<g:eachError bean="${ventas}" var="error">
+					<g:eachError bean="${rol}" var="error">
 					<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 					</g:eachError>
 				</ul>
@@ -52,7 +52,7 @@
 				<fieldset>
 					<g:form class="form-horizontal" action="create" >
 						<fieldset>
-							<f:all bean="ventas"/>
+							<f:all bean="rol"/>
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">
 									<i class="icon-ok icon-white"></i>

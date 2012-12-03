@@ -28,6 +28,9 @@ class PedidoController {
             render(view: "create", model: [pedido: pedido])
             return
         }
+        if(pedido.status == "Entregado"){
+            pedido.status == "Entregado"
+        }
         pedido.fechaPedido = new Date()
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'pedido.label', default: 'Pedido'), pedido.id])

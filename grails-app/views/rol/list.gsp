@@ -1,10 +1,10 @@
 
-<%@ page import="com.rubi.maniquies.Proveedor" %>
+<%@ page import="com.rubi.maniquies.Rol" %>
 <!doctype html>
 <html>
 	<head>
 		<meta name="layout" content="bootstrap">
-		<g:set var="entityName" value="${message(code: 'proveedor.label', default: 'Proveedor')}" />
+		<g:set var="entityName" value="${message(code: 'rol.label', default: 'Rol')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -44,26 +44,26 @@
 					<thead>
 						<tr>
 						
-							<g:sortableColumn property="nombre" title="${message(code: 'proveedor.nombre.label', default: 'Nombre')}" />
+							<g:sortableColumn property="authority" title="${message(code: 'rol.authority.label', default: 'Authority')}" />
 						
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-					<g:each in="${proveedorList}" var="proveedor">
+					<g:each in="${rolList}" var="rol">
 						<tr>
 						
-							<td>${fieldValue(bean: proveedor, field: "nombre")}</td>
+							<td>${fieldValue(bean: rol, field: "authority")}</td>
 						
 							<td class="link">
-								<g:link action="show" id="${proveedor.id}" class="btn btn-small">Show &raquo;</g:link>
+								<g:link action="show" id="${rol.id}" class="btn btn-small">Show &raquo;</g:link>
 							</td>
 						</tr>
 					</g:each>
 					</tbody>
 				</table>
 				<div class="pagination">
-					<bootstrap:paginate total="${proveedorTotal}" />
+					<bootstrap:paginate total="${rolTotal}" />
 				</div>
 			</div>
 
