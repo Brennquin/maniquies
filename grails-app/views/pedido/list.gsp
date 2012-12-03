@@ -31,6 +31,8 @@
 						<g:sortableColumn property="cantidad" title="${message(code: 'pedido.cantidad.label', default: 'Cantidad')}" />
 					
 						<g:sortableColumn property="status" title="${message(code: 'pedido.status.label', default: 'Status')}" />
+						
+                                                <g:sortableColumn property="almacen" title="${message(code: 'pedido.almacen.label', default: 'Almacen')}" />
 					
 						<g:sortableColumn property="fechaPedido" title="${message(code: 'pedido.fechaPedido.label', default: 'Fecha Pedido')}" />
 
@@ -46,6 +48,8 @@
 						<td>${fieldValue(bean: pedido, field: "cantidad")}</td>
 					
 						<td>${fieldValue(bean: pedido, field: "status")}</td>
+						
+                                                <td>${fieldValue(bean: pedido, field: "producto.almacen")}</td>
 
                                                 <td><g:formatDate date="${pedido.fechaPedido}" /></td>
 

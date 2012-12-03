@@ -1,10 +1,7 @@
 package com.rubi.maniquies
 
 import org.springframework.dao.DataIntegrityViolationException
-import grails.plugins.springsecurity.Secured
-import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
-@Secured(['ROLE_ADMIN'])
 class VentasController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -88,7 +85,7 @@ class VentasController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'ventas.label', default: 'Ventas'), ventas.id])
-        redirect(action: "list")
+        redirect(action: "show", id: ventas.id)
     }
 
     def delete(Long id) {

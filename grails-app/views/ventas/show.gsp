@@ -32,6 +32,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${ventas?.total}">
+				<li class="fieldcontain">
+					<span id="total-label" class="property-label"><g:message code="ventas.total.label" default="Total" /></span>
+					
+						<span class="property-value" aria-labelledby="total-label"><g:fieldValue bean="${ventas}" field="total"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${ventas?.cliente}">
 				<li class="fieldcontain">
 					<span id="cliente-label" class="property-label"><g:message code="ventas.cliente.label" default="Cliente" /></span>
@@ -46,15 +55,6 @@
 					<span id="fechaVenta-label" class="property-label"><g:message code="ventas.fechaVenta.label" default="Fecha Venta" /></span>
 					
 						<span class="property-value" aria-labelledby="fechaVenta-label"><g:formatDate date="${ventas?.fechaVenta}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${ventas?.precio}">
-				<li class="fieldcontain">
-					<span id="precio-label" class="property-label"><g:message code="ventas.precio.label" default="Precio" /></span>
-					
-						<span class="property-value" aria-labelledby="precio-label"><g:fieldValue bean="${ventas}" field="precio"/></span>
 					
 				</li>
 				</g:if>

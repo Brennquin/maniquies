@@ -2,13 +2,15 @@ package com.rubi.maniquies
 
 class Ventas {
     Producto producto
-    Integer cantidad = new Integer(0)
-    BigDecimal precio = new BigDecimal('0.0')
+    BigDecimal cantidad = new BigDecimal('0')
+    BigDecimal total = new BigDecimal('0')
+    BigDecimal precio = new BigDecimal('0')
     Date fechaVenta = new Date()
     Cliente cliente
 
     static constraints = {
-        cantidad min: 0
+        cantidad min: 0.0
+        total min: 0.0
     }
     
     String toString(){

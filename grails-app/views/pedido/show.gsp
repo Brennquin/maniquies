@@ -26,7 +26,7 @@
 				<li class="fieldcontain">
 					<span id="producto-label" class="property-label"><g:message code="pedido.producto.label" default="Producto" /></span>
 					
-						<span class="property-value" aria-labelledby="producto-label"><g:link controller="producto" action="show" id="${pedido?.producto?.id}">${pedido?.producto?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="producto-label">${pedido?.producto?.encodeAsHTML()}</span>
 					
 				</li>
 				</g:if>
@@ -73,9 +73,9 @@
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${pedido?.id}" />
-					<g:link class="edit" action="edit" id="${pedido?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                                         <g:if test="${pedido.status== "Pedido"}">
+                                            <g:link class="edit" action="edit" id="${pedido?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                                            <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                                             <g:link class="edit" action="entregar" id="${pedido?.id}"><g:message code="default.button.deliver.label" default="Entregar" /></g:link>
                                         </g:if>
 				</fieldset>

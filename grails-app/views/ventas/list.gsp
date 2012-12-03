@@ -26,11 +26,11 @@
 					
 						<g:sortableColumn property="cantidad" title="${message(code: 'ventas.cantidad.label', default: 'Cantidad')}" />
 					
+						<g:sortableColumn property="total" title="${message(code: 'ventas.total.label', default: 'Total')}" />
+					
 						<th><g:message code="ventas.cliente.label" default="Cliente" /></th>
 					
 						<g:sortableColumn property="fechaVenta" title="${message(code: 'ventas.fechaVenta.label', default: 'Fecha Venta')}" />
-					
-						<g:sortableColumn property="precio" title="${message(code: 'ventas.precio.label', default: 'Precio')}" />
 					
 						<th><g:message code="ventas.producto.label" default="Producto" /></th>
 					
@@ -42,11 +42,11 @@
 					
 						<td><g:link action="show" id="${ventas.id}">${fieldValue(bean: ventas, field: "cantidad")}</g:link></td>
 					
+						<td>${fieldValue(bean: ventas, field: "total")}</td>
+					
 						<td>${fieldValue(bean: ventas, field: "cliente")}</td>
 					
 						<td><g:formatDate date="${ventas.fechaVenta}" /></td>
-					
-						<td>${fieldValue(bean: ventas, field: "precio")}</td>
 					
 						<td>${fieldValue(bean: ventas, field: "producto")}</td>
 					
