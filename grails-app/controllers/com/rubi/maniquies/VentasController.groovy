@@ -32,6 +32,8 @@ class VentasController {
             render(view: "create", model: [ventas: ventas])
             return
         }
+        
+        ventas.total =  producto.precio * ventas.cantidad
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'ventas.label', default: 'Ventas'), ventas.id])
         redirect(action: "show", id: ventas.id)

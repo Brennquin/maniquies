@@ -8,7 +8,55 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="row-fluid">
+		<a href="#show-ventas" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<div class="nav" role="navigation">
+			<ul>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+			</ul>
+		</div>
+		<div id="show-ventas" class="content scaffold-show" role="main">
+			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<g:if test="${flash.message}">
+			<div class="message" role="status">${flash.message}</div>
+			</g:if>
+			<ol class="property-list ventas">
+                          
+                                <g:if test="${ventas?.producto}">
+				<li class="fieldcontain">
+					<span id="producto-label" class="property-label"><g:message code="ventas.producto.label" default="Producto" /></span>
+					
+						<span class="property-value" aria-labelledby="producto-label">${ventas?.producto?.encodeAsHTML()}</span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${ventas?.cantidad}">
+				<li class="fieldcontain">
+					<span id="cantidad-label" class="property-label"><g:message code="ventas.cantidad.label" default="Cantidad" /></span>
+					
+						<span class="property-value" aria-labelledby="cantidad-label"><g:fieldValue bean="${ventas}" field="cantidad"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${ventas?.total}">
+				<li class="fieldcontain">
+					<span id="total-label" class="property-label"><g:message code="ventas.total.label" default="Total" /></span>
+					
+						<span class="property-value" aria-labelledby="total-label"><g:fieldValue bean="${ventas}" field="total"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${ventas?.cliente}">
+				<li class="fieldcontain">
+					<span id="cliente-label" class="property-label"><g:message code="ventas.cliente.label" default="Cliente" /></span>
+					
+						<span class="property-value" aria-labelledby="cliente-label">${ventas?.cliente?.encodeAsHTML()}</span>
+					
+				</li>
+				</g:if>
 			
 			<div class="span3">
 				<div class="well">
@@ -30,63 +78,11 @@
 				</div>
 			</div>
 			
-			<div class="span9">
 
-				<div class="page-header">
-					<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-				</div>
+			</ol>
+			<g:form>
+				<fieldset class="buttons">
 
-				<g:if test="${flash.message}">
-				<bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
-				</g:if>
-
-				<dl>
-				
-					<g:if test="${ventas?.cantidad}">
-						<dt><g:message code="ventas.cantidad.label" default="Cantidad" /></dt>
-						
-							<dd><g:fieldValue bean="${ventas}" field="cantidad"/></dd>
-						
-					</g:if>
-				
-					<g:if test="${ventas?.total}">
-						<dt><g:message code="ventas.total.label" default="Total" /></dt>
-						
-							<dd><g:fieldValue bean="${ventas}" field="total"/></dd>
-						
-					</g:if>
-				
-					<g:if test="${ventas?.cliente}">
-						<dt><g:message code="ventas.cliente.label" default="Cliente" /></dt>
-						
-							<dd><g:link controller="cliente" action="show" id="${ventas?.cliente?.id}">${ventas?.cliente?.encodeAsHTML()}</g:link></dd>
-						
-					</g:if>
-				
-					<g:if test="${ventas?.fechaVenta}">
-						<dt><g:message code="ventas.fechaVenta.label" default="Fecha Venta" /></dt>
-						
-							<dd><g:formatDate date="${ventas?.fechaVenta}" /></dd>
-						
-					</g:if>
-				
-					<g:if test="${ventas?.precio}">
-						<dt><g:message code="ventas.precio.label" default="Precio" /></dt>
-						
-							<dd><g:fieldValue bean="${ventas}" field="precio"/></dd>
-						
-					</g:if>
-				
-					<g:if test="${ventas?.producto}">
-						<dt><g:message code="ventas.producto.label" default="Producto" /></dt>
-						
-							<dd><g:link controller="producto" action="show" id="${ventas?.producto?.id}">${ventas?.producto?.encodeAsHTML()}</g:link></dd>
-						
-					</g:if>
-				
-				</dl>
-
-				<g:form>
 					<g:hiddenField name="id" value="${ventas?.id}" />
 					<div class="form-actions">
 						<g:link class="btn" action="edit" id="${ventas?.id}">
