@@ -15,12 +15,12 @@
             </ul>
         </div>
         <div class="body">
-            <h1><g:message code="general.proyecto" /></h1>
+            <h1>Sistema</h1>
             <g:if test="${flash.message}">
                 <div class="message">${flash.message}</div>
             </g:if>
             <div id="text-body">
-                <p>Bienvenido al Sistema de Gestión de Almacén</p>
+                <p>Bienvenido al Sistema</p>
             </div>
         </div>
     </body>
