@@ -40,6 +40,45 @@
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
+                        <h1><g:message code="default.show.label" args="["Productos de Proveedor"]" /></h1>
+                        <table>
+				<thead>
+					<tr>
+					
+						<g:sortableColumn property="nombre" title="${message(code: 'producto.nombre.label', default: 'Nombre')}" />
+					
+						<g:sortableColumn property="cantidad" title="${message(code: 'producto.cantidad.label', default: 'Cantidad')}" />
+					
+						<g:sortableColumn property="color" title="${message(code: 'producto.color.label', default: 'Color')}" />
+					
+						<g:sortableColumn property="tamaño" title="${message(code: 'producto.tamaño.label', default: 'Tamaño')}" />
+					
+						<th><g:message code="producto.almacen.label" default="Almacen" /></th>
+					
+						<g:sortableColumn property="material" title="${message(code: 'producto.material.label', default: 'Material')}" />
+					
+					</tr>
+				</thead>
+				<tbody>
+				<g:each in="${productos}" status="i" var="producto">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					
+						<td><g:link action="show" id="${producto.id}">${fieldValue(bean: producto, field: "nombre")}</g:link></td>
+					
+						<td>${fieldValue(bean: producto, field: "cantidad")}</td>
+					
+						<td>${fieldValue(bean: producto, field: "color")}</td>
+					
+						<td>${fieldValue(bean: producto, field: "tamaño")}</td>
+					
+						<td>${fieldValue(bean: producto, field: "almacen")}</td>
+					
+						<td>${fieldValue(bean: producto, field: "material")}</td>
+					
+					</tr>
+				</g:each>
+				</tbody>
+			</table>
 		</div>
 	</body>
 </html>

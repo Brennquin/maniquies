@@ -38,7 +38,7 @@ class ProveedorController {
             return
         }
 
-        [proveedor: proveedor]
+        [proveedor: proveedor, productos: productos(id)]
     }
 
     def edit(Long id) {
@@ -98,5 +98,16 @@ class ProveedorController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'proveedor.label', default: 'Proveedor'), id])
             redirect(action: "show", id: id)
         }
+    }
+    
+    def productos(Long id) {
+        List productos = Producto.list(params)
+        def prod = []
+        for(Producto producto : productos){
+            if(producto.proveedor == Proveedor.get(id)){
+                prod << producto
+            }
+        }
+        return prod
     }
 }

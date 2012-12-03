@@ -13,7 +13,7 @@ class Producto {
         
     static constraints = {
         nombre blank: false
-        cantidad min: 1
+        cantidad min: 0
         color inList: ["Beige", "Moreno", "Cafe", "Blanco", "Transparente"]
         tamaño inList: ["Chico", "Mediano" , "Grande"]
     }
