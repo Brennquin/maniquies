@@ -4,6 +4,7 @@ class Ventas {
     Producto producto
     Integer cantidad = new Integer(0)
     BigDecimal precio = new BigDecimal('0.0')
+    BigDecimal precioUnitario = new BigDecimal('0.0')
     Date fechaVenta = new Date()
     Cliente cliente
 

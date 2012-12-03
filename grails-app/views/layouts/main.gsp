@@ -21,7 +21,7 @@
 	<body>
                 <div id="status">
                     <sec:ifLoggedIn>
-                        Bienvenido <sec:loggedInUserInfo field="username" />
+                        <h1>Bienvenido</h1> <sec:loggedInUserInfo field="username" />
                         [ ^_^ ]
                         <g:link class="list" controller="logout" >Salir</g:link>
                     </sec:ifLoggedIn>

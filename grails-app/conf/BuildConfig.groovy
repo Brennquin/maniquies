@@ -35,7 +35,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         runtime 'mysql:mysql-connector-java:5.1.20'
-        runtime 'postgresql:postgresql:9.2-1000.jdbc4'
+//        runtime 'postgresql:postgresql:9.2-1000.jdbc4'
     }
 
     plugins {
@@ -51,6 +51,8 @@ grails.project.dependency.resolution = {
         build ":tomcat:$grailsVersion"
 
         runtime ":database-migration:1.1"
+        runtime ":fields:1.3"
+        runtime ":twitter-bootstrap:2.2.1"
 
         compile ':cache:1.0.0'
     }

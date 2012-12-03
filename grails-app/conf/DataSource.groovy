@@ -7,11 +7,11 @@
 
 dataSource {
     pooled = true    
-    driverClassName = "org.postgresql.Driver"
-    username = "tomcat"    
-    password = "tomcat00"
+    driverClassName = "com.mysql.jdbc.Driver"
+    username = "root"    
+    password = ""
     dbCreate = "update" // create, create-drop, update    
-    url = 'jdbc:postgresql:maniquies'
+    url = 'jdbc:mysql://localhost/maniquies'
 }
 
 hibernate {
@@ -24,7 +24,7 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop','update'
-            url = 'jdbc:postgresql://localhost/maniquies'
+            url = 'jdbc:mysql://localhost/maniquies'
         }
     }
     test {
