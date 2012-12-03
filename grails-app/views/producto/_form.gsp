@@ -69,7 +69,7 @@
 </div>
 
 <g:javascript>
-      jQuery(document).ready(function() {
-        jQuery('#nombre').focus();
-      });
+    jQuery(document).ready(function() {
+       jQuery('#nombre').focus();
+    });
 </g:javascript>

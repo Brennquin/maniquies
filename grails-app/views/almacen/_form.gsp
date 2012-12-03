@@ -10,3 +10,8 @@
 	<g:textField name="nombre" value="${almacen?.nombre}"/>
 </div>
 
+<g:javascript>
+    jQuery(document).ready(function() {
+       jQuery('#nombre').focus();
+    });
+</g:javascript>

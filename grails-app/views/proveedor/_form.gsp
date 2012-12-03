@@ -10,3 +10,8 @@
 	<g:textField name="nombre" required="" value="${proveedor?.nombre}"/>
 </div>
 
+<g:javascript>
+    jQuery(document).ready(function() {
+       jQuery('#nombre').focus();
+    });
+</g:javascript>
