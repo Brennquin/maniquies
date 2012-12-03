@@ -7,5 +7,7 @@ class Proveedor {
         nombre blank: false
     }
     
-    
+    String toString(){
+        return nombre
+    }
 }

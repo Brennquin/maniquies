@@ -37,22 +37,24 @@
 <div class="fieldcontain ${hasErrors(bean: producto, field: 'almacen', 'error')} required">
 	<label for="almacen">
 		<g:message code="producto.almacen.label" default="Almacen" />
-		<span class="required-indicator">*</span>
-	</label>
+
+        </label>
 	<g:select id="almacen" name="almacen.id" from="${com.rubi.maniquies.Almacen.list()}" optionKey="id" required="" value="${producto?.almacen?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: producto, field: 'material', 'error')} ">
 	<label for="material">
 		<g:message code="producto.material.label" default="Material" />
-		
+                
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="material" value="${producto?.material}"/>
+	<g:textField name="material" value="${producto?.material}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: producto, field: 'precio', 'error')} required">
 	<label for="precio">
 		<g:message code="producto.precio.label" default="Precio" />
+		
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="precio" value="${fieldValue(bean: producto, field: 'precio')}" required=""/>
@@ -61,8 +63,13 @@
 <div class="fieldcontain ${hasErrors(bean: producto, field: 'proveedor', 'error')} required">
 	<label for="proveedor">
 		<g:message code="producto.proveedor.label" default="Proveedor" />
-		<span class="required-indicator">*</span>
+		
 	</label>
 	<g:select id="proveedor" name="proveedor.id" from="${com.rubi.maniquies.Proveedor.list()}" optionKey="id" required="" value="${producto?.proveedor?.id}" class="many-to-one"/>
 </div>
 
+<g:javascript>
+      jQuery(document).ready(function() {
+        jQuery('#nombre').focus();
+      });
+</g:javascript>

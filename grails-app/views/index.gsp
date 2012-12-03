@@ -12,6 +12,7 @@
                 <li><g:link class="list" controller="almacen" action="list"><g:message code="default.list.label" args="["Almacen"]" /></g:link></li>
                 <li><g:link class="list" controller="proveedor" action="list"><g:message code="default.list.label" args="["Proveedor"]" /></g:link></li>
                 <li><g:link class="list" controller="producto" action="list"><g:message code="default.list.label" args="["Producto"]" /></g:link></li>
+                <li><g:link class="list" controller="pedido" action="list"><g:message code="default.list.label" args="["Pedido"]" /></g:link></li>
             </ul>
         </div>
         <div class="body">
