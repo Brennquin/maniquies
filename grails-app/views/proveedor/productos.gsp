@@ -16,7 +16,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                                <li><g:link class="list" controller="almacen" action="list"><g:message code="default.list.label" args="["Almacen"]" /></g:link></li>
+                                <li><g:link class="list" controller="proveedor" action="list"><g:message code="default.list.label" args="["Proveedor"]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-producto" class="content scaffold-list" role="main">
@@ -30,7 +30,7 @@
 					
 						<g:sortableColumn property="nombre" title="${message(code: 'producto.nombre.label', default: 'Nombre')}" />
 					
-						<th><g:message code="producto.proveedor.label" default="Proveedor" /></th>
+						<th><g:message code="producto.almacen.label" default="Almacen" /></th>
 
                                                 <g:sortableColumn property="cantidad" title="${message(code: 'producto.cantidad.label', default: 'Cantidad')}" />
 
@@ -47,7 +47,7 @@
 					
 						<td>${fieldValue(bean: producto, field: "nombre")}</td>
 
-                                                <td>${fieldValue(bean: producto, field: "proveedor")}</td>
+                                                <td>${fieldValue(bean: producto, field: "almacen")}</td>
 						
                                                 <td>${fieldValue(bean: producto, field: "cantidad")}</td>
 						

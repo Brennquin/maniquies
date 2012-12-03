@@ -26,31 +26,30 @@
 				<thead>
 					<tr>
 					
+						<th><g:message code="pedido.producto.label" default="Producto" /></th>
+					
 						<g:sortableColumn property="cantidad" title="${message(code: 'pedido.cantidad.label', default: 'Cantidad')}" />
 					
 						<g:sortableColumn property="status" title="${message(code: 'pedido.status.label', default: 'Status')}" />
 					
-						<g:sortableColumn property="fechaEntrega" title="${message(code: 'pedido.fechaEntrega.label', default: 'Fecha Entrega')}" />
-					
 						<g:sortableColumn property="fechaPedido" title="${message(code: 'pedido.fechaPedido.label', default: 'Fecha Pedido')}" />
-					
-						<th><g:message code="pedido.producto.label" default="Producto" /></th>
-					
+
+                                                <g:sortableColumn property="fechaEntrega" title="${message(code: 'pedido.fechaEntrega.label', default: 'Fecha Entrega')}" />
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${pedidoList}" status="i" var="pedido">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${pedido.id}">${fieldValue(bean: pedido, field: "cantidad")}</g:link></td>
+						<td><g:link action="show" id="${pedido.id}">${fieldValue(bean: pedido, field: "producto")}</g:link></td>
+					
+						<td>${fieldValue(bean: pedido, field: "cantidad")}</td>
 					
 						<td>${fieldValue(bean: pedido, field: "status")}</td>
-					
-						<td><g:formatDate date="${pedido.fechaEntrega}" /></td>
-					
-						<td><g:formatDate date="${pedido.fechaPedido}" /></td>
-					
-						<td>${fieldValue(bean: pedido, field: "producto")}</td>
+
+                                                <td><g:formatDate date="${pedido.fechaPedido}" /></td>
+
+                                                <td><g:formatDate date="${pedido.fechaEntrega}" /></td>
 					
 					</tr>
 				</g:each>

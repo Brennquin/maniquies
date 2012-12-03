@@ -81,7 +81,7 @@ class ClienteController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'cliente.label', default: 'Cliente'), cliente.id])
-        redirect(action: "show", id: cliente.id)
+        redirect(action: "list")
     }
 
     def delete(Long id) {

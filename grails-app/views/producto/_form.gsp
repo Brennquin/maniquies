@@ -18,20 +18,12 @@
 	<g:field name="cantidad" type="number" min="0" value="${producto.cantidad}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: producto, field: 'color', 'error')} ">
-	<label for="color">
-		<g:message code="producto.color.label" default="Color" />
+<div class="fieldcontain ${hasErrors(bean: producto, field: 'proveedor', 'error')} required">
+	<label for="proveedor">
+		<g:message code="producto.proveedor.label" default="Proveedor" />
 		
 	</label>
-	<g:select name="color" from="${producto.constraints.color.inList}" value="${producto?.color}" valueMessagePrefix="producto.color" />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: producto, field: 'tamaño', 'error')} ">
-	<label for="tamaño">
-		<g:message code="producto.tamaño.label" default="Tamaño" />
-		
-	</label>
-	<g:select name="tamaño" from="${producto.constraints.tamaño.inList}" value="${producto?.tamaño}" valueMessagePrefix="producto.tamaño" />
+	<g:select id="proveedor" name="proveedor.id" from="${com.rubi.maniquies.Proveedor.list()}" optionKey="id" required="" value="${producto?.proveedor?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: producto, field: 'almacen', 'error')} required">
@@ -40,15 +32,6 @@
 
         </label>
 	<g:select id="almacen" name="almacen.id" from="${com.rubi.maniquies.Almacen.list()}" optionKey="id" required="" value="${producto?.almacen?.id}" class="many-to-one"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: producto, field: 'material', 'error')} ">
-	<label for="material">
-		<g:message code="producto.material.label" default="Material" />
-                
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="material" value="${producto?.material}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: producto, field: 'precio', 'error')} required">
@@ -60,12 +43,30 @@
 	<g:field name="precio" value="${fieldValue(bean: producto, field: 'precio')}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: producto, field: 'proveedor', 'error')} required">
-	<label for="proveedor">
-		<g:message code="producto.proveedor.label" default="Proveedor" />
+<div class="fieldcontain ${hasErrors(bean: producto, field: 'material', 'error')} ">
+	<label for="material">
+		<g:message code="producto.material.label" default="Material" />
+                
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="material" value="${producto?.material}" required=""/>
+</div>
+
+
+<div class="fieldcontain ${hasErrors(bean: producto, field: 'tamaño', 'error')} ">
+	<label for="tamaño">
+		<g:message code="producto.tamaño.label" default="Tamaño" />
 		
 	</label>
-	<g:select id="proveedor" name="proveedor.id" from="${com.rubi.maniquies.Proveedor.list()}" optionKey="id" required="" value="${producto?.proveedor?.id}" class="many-to-one"/>
+	<g:select name="tamaño" from="${producto.constraints.tamaño.inList}" value="${producto?.tamaño}" valueMessagePrefix="producto.tamaño" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: producto, field: 'color', 'error')} ">
+	<label for="color">
+		<g:message code="producto.color.label" default="Color" />
+		
+	</label>
+	<g:select name="color" from="${producto.constraints.color.inList}" value="${producto?.color}" valueMessagePrefix="producto.color" />
 </div>
 
 <g:javascript>

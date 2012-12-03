@@ -81,7 +81,7 @@ class AlmacenController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'almacen.label', default: 'Almacen'), almacen.id])
-        redirect(action: "show", id: almacen.id)
+        redirect(action: "list")
     }
 
     def delete(Long id) {

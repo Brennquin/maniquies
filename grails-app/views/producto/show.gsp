@@ -39,12 +39,39 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${producto?.color}">
+                          
+                                <g:if test="${producto?.proveedor}">
 				<li class="fieldcontain">
-					<span id="color-label" class="property-label"><g:message code="producto.color.label" default="Color" /></span>
+					<span id="proveedor-label" class="property-label"><g:message code="producto.proveedor.label" default="Proveedor" /></span>
 					
-						<span class="property-value" aria-labelledby="color-label"><g:fieldValue bean="${producto}" field="color"/></span>
+						<span class="property-value" aria-labelledby="proveedor-label">${producto?.proveedor?.encodeAsHTML()}</span>
+					
+				</li>
+				</g:if>
+                          
+                                <g:if test="${producto?.almacen}">
+				<li class="fieldcontain">
+					<span id="almacen-label" class="property-label"><g:message code="producto.almacen.label" default="Almacen" /></span>
+					
+						<span class="property-value" aria-labelledby="almacen-label">${producto?.almacen?.encodeAsHTML()}</span>
+					
+				</li>
+				</g:if>
+                          
+                                <g:if test="${producto?.precio}">
+				<li class="fieldcontain">
+					<span id="precio-label" class="property-label"><g:message code="producto.precio.label" default="Precio" /></span>
+					
+						<span class="property-value" aria-labelledby="precio-label"><g:fieldValue bean="${producto}" field="precio"/></span>
+					
+				</li>
+				</g:if>
+                          
+                                <g:if test="${producto?.material}">
+				<li class="fieldcontain">
+					<span id="material-label" class="property-label"><g:message code="producto.material.label" default="Material" /></span>
+					
+						<span class="property-value" aria-labelledby="material-label"><g:fieldValue bean="${producto}" field="material"/></span>
 					
 				</li>
 				</g:if>
@@ -58,42 +85,15 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${producto?.almacen}">
+				<g:if test="${producto?.color}">
 				<li class="fieldcontain">
-					<span id="almacen-label" class="property-label"><g:message code="producto.almacen.label" default="Almacen" /></span>
+					<span id="color-label" class="property-label"><g:message code="producto.color.label" default="Color" /></span>
 					
-						<span class="property-value" aria-labelledby="almacen-label"><g:link controller="almacen" action="show" id="${producto?.almacen?.id}">${producto?.almacen?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="color-label"><g:fieldValue bean="${producto}" field="color"/></span>
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${producto?.material}">
-				<li class="fieldcontain">
-					<span id="material-label" class="property-label"><g:message code="producto.material.label" default="Material" /></span>
-					
-						<span class="property-value" aria-labelledby="material-label"><g:fieldValue bean="${producto}" field="material"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${producto?.precio}">
-				<li class="fieldcontain">
-					<span id="precio-label" class="property-label"><g:message code="producto.precio.label" default="Precio" /></span>
-					
-						<span class="property-value" aria-labelledby="precio-label"><g:fieldValue bean="${producto}" field="precio"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${producto?.proveedor}">
-				<li class="fieldcontain">
-					<span id="proveedor-label" class="property-label"><g:message code="producto.proveedor.label" default="Proveedor" /></span>
-					
-						<span class="property-value" aria-labelledby="proveedor-label"><g:link controller="proveedor" action="show" id="${producto?.proveedor?.id}">${producto?.proveedor?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
+				
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

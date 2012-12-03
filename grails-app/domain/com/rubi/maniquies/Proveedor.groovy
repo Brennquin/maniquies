@@ -4,7 +4,7 @@ class Proveedor {
     String nombre
     
     static constraints = {
-        nombre blank: false
+        nombre blank: false, unique: true
     }
     
     String toString(){
