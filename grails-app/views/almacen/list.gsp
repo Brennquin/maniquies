@@ -12,7 +12,8 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                                <li><g:link class="list" controller="almacen" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+                                <li><g:link class="list" controller="almacen" action="create"><g:message code="default.create.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-almacen" class="content scaffold-list" role="main">
@@ -25,6 +26,7 @@
 					<tr>
 					
 						<g:sortableColumn property="nombre" title="${message(code: 'almacen.nombre.label', default: 'Nombre')}" />
+						<g:sortableColumn property="nombre" title="${message(code: 'almacen.nombre.label', default: 'Productos')}" />
 					
 					</tr>
 				</thead>
@@ -33,6 +35,7 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${almacen.id}">${fieldValue(bean: almacen, field: "nombre")}</g:link></td>
+						<td><g:link action="productos" id="${almacen.id}">Lista de Productos</g:link></td>
 					
 					</tr>
 				</g:each>

@@ -8,11 +8,13 @@ class Producto {
     String tamaño
     BigDecimal precio
     Integer cantidad = new Integer('0')
-    
     Almacen almacen
+    Proveedor proveedor
         
     static constraints = {
-        color inList: ["Beige", "Moreno", "Cafe"]
+        nombre blank: false
+        cantidad min: 1
+        color inList: ["Beige", "Moreno", "Cafe", "Blanco", "Transparente"]
         tamaño inList: ["Chico", "Mediano" , "Grande"]
     }
     

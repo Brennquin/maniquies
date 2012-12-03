@@ -2,6 +2,14 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: producto, field: 'nombre', 'error')} required">
+	<label for="nombre">
+		<g:message code="producto.nombre.label" default="Nombre" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="nombre" required="" value="${producto?.nombre}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: producto, field: 'cantidad', 'error')} required">
 	<label for="cantidad">
 		<g:message code="producto.cantidad.label" default="Cantidad" />
@@ -42,19 +50,19 @@
 	<g:textField name="material" value="${producto?.material}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: producto, field: 'nombre', 'error')} ">
-	<label for="nombre">
-		<g:message code="producto.nombre.label" default="Nombre" />
-		
-	</label>
-	<g:textField name="nombre" value="${producto?.nombre}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: producto, field: 'precio', 'error')} required">
 	<label for="precio">
 		<g:message code="producto.precio.label" default="Precio" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="precio" value="${fieldValue(bean: producto, field: 'precio')}" required=""/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: producto, field: 'proveedor', 'error')} required">
+	<label for="proveedor">
+		<g:message code="producto.proveedor.label" default="Proveedor" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="proveedor" name="proveedor.id" from="${com.rubi.maniquies.Proveedor.list()}" optionKey="id" required="" value="${producto?.proveedor?.id}" class="many-to-one"/>
 </div>
 

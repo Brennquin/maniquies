@@ -99,4 +99,15 @@ class AlmacenController {
             redirect(action: "show", id: id)
         }
     }
+    
+    def productos(Long id) {
+        List productos = Producto.list(params)
+        def prod = []
+        for(Producto producto : productos){
+            if(producto.almacen == Almacen.get(id)){
+                prod << producto
+            }
+        }
+        [productos: prod]
+    }
 }
