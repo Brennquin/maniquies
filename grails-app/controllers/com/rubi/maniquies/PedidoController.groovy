@@ -28,6 +28,7 @@ class PedidoController {
             render(view: "create", model: [pedido: pedido])
             return
         }
+        pedido.fechaPedido = new Date()
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'pedido.label', default: 'Pedido'), pedido.id])
         redirect(action: "show", id: pedido.id)
@@ -81,7 +82,7 @@ class PedidoController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'pedido.label', default: 'Pedido'), pedido.id])
-        redirect(action: "show", id: pedido.id)
+        redirect(action: "list")
     }
 
     def delete(Long id) {
@@ -130,6 +131,7 @@ class PedidoController {
         Producto producto = pedido.producto
         producto.cantidad += pedido.cantidad
         pedido.status = "Entregado"
+        pedido.fechaEntrega = new Date()
         
         redirect(action: "list")
     }

@@ -22,7 +22,16 @@
 			</g:if>
 			<ol class="property-list pedido">
 			
-				<g:if test="${pedido?.cantidad}">
+                                <g:if test="${pedido?.producto}">
+				<li class="fieldcontain">
+					<span id="producto-label" class="property-label"><g:message code="pedido.producto.label" default="Producto" /></span>
+					
+						<span class="property-value" aria-labelledby="producto-label"><g:link controller="producto" action="show" id="${pedido?.producto?.id}">${pedido?.producto?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+                          
+                                <g:if test="${pedido?.cantidad}">
 				<li class="fieldcontain">
 					<span id="cantidad-label" class="property-label"><g:message code="pedido.cantidad.label" default="Cantidad" /></span>
 					
@@ -58,14 +67,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${pedido?.producto}">
-				<li class="fieldcontain">
-					<span id="producto-label" class="property-label"><g:message code="pedido.producto.label" default="Producto" /></span>
-					
-						<span class="property-value" aria-labelledby="producto-label"><g:link controller="producto" action="show" id="${pedido?.producto?.id}">${pedido?.producto?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
+				
 			
 			</ol>
 			<g:form>

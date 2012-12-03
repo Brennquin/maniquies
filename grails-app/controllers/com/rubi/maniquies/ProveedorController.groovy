@@ -41,7 +41,7 @@ class ProveedorController {
             return
         }
 
-        [proveedor: proveedor, productos: productos(id)]
+        [proveedor: proveedor]
     }
 
     def edit(Long id) {
@@ -81,7 +81,7 @@ class ProveedorController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'proveedor.label', default: 'Proveedor'), proveedor.id])
-        redirect(action: "show", id: proveedor.id)
+        redirect(action: "list")
     }
 
     def delete(Long id) {
@@ -111,6 +111,6 @@ class ProveedorController {
                 prod << producto
             }
         }
-        return prod
+        [productos: prod]
     }
 }
