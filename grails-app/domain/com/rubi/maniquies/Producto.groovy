@@ -18,7 +18,5 @@ class Producto {
         tamaño inList: ["Chico", "Mediano" , "Grande"]
     }
     
-    String toString(){
-        return nombre;
-    }
+    
 }
