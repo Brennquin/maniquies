@@ -1,7 +1,10 @@
 package com.rubi.maniquies
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
+@Secured(['ROLE_ADMIN'])
 class ProveedorController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

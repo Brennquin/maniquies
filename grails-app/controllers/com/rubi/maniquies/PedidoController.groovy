@@ -1,7 +1,10 @@
 package com.rubi.maniquies
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
 
+@Secured(['ROLE_ADMIN'])
 class PedidoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -98,5 +101,36 @@ class PedidoController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'pedido.label', default: 'Pedido'), id])
             redirect(action: "show", id: id)
         }
+    }
+    
+    def listaPedidos(){
+        List pedidos = Pedido.list(params)
+        def ped = []
+        for(Pedido pedido : pedidos){
+            if(pedido.status == "Pedido"){
+                ped << pedido
+            }
+        }
+        [pedidos: ped, pedidoTotal: Pedido.count()]
+    }
+    
+    def listaEntregados(){
+        List pedidos = Pedido.list(params)
+        def ped = []
+        for(Pedido pedido : pedidos){
+            if(pedido.status == "Entregado"){
+                ped << pedido
+            }
+        }
+        [pedidos: ped, pedidoTotal: Pedido.count()]
+    }
+    
+    def entregar(Long id){
+        Pedido pedido = Pedido.get(id)
+        Producto producto = pedido.producto
+        producto.cantidad += pedido.cantidad
+        pedido.status = "Entregado"
+        
+        redirect(action: "list")
     }
 }

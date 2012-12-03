@@ -19,6 +19,16 @@
 		<r:layoutResources />
 	</head>
 	<body>
+                <div id="status">
+                    <sec:ifLoggedIn>
+                        Bienvenido <sec:loggedInUserInfo field="username" />
+                        [ ^_^ ]
+                        <g:link class="list" controller="logout" >Salir</g:link>
+                    </sec:ifLoggedIn>
+                    <sec:ifNotLoggedIn>
+                        <g:link class="list" controller="login" >Login</g:link>
+                    </sec:ifNotLoggedIn>
+                </div>
 		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>

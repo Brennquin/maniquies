@@ -13,7 +13,7 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="listaPedidos"><g:message code="default.list.label" args="["Pedidos"]" /></g:link></li>
+				<li><g:link class="list" controller="pedido" action="list"><g:message code="default.list.label" args="["Pedido"]" /></g:link></li>
 				<li><g:link class="create" action="listaEntregados"><g:message code="default.list.label" args="["Entregados"]" /></g:link></li>
 			</ul>
 		</div>
@@ -39,7 +39,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${pedidoList}" status="i" var="pedido">
+				<g:each in="${pedidos}" status="i" var="pedido">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${pedido.id}">${fieldValue(bean: pedido, field: "cantidad")}</g:link></td>
