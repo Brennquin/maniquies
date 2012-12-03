@@ -16,7 +16,7 @@ class Producto {
         material blank: false
         cantidad min: 0
         color inList: ["Beige", "Moreno", "Cafe", "Blanco", "Transparente"]
-        tamaño inList: ["Chico", "Mediano" , "Grande"]
+        tamaño inList: ["Chico", "Mediano", "Grande"]
     }
     
     String toString(){

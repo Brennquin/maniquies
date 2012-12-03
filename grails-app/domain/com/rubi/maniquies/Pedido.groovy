@@ -9,6 +9,6 @@ class Pedido {
 
     static constraints = {
         cantidad min: 0
-        status inList: ['Pedido', 'Engregado']
+        status inList: ["Pedido", "Engregado"]
     }
 }
